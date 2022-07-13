@@ -1,54 +1,91 @@
-let player = prompt('pick rock, paper, or scissors');
 
-function computer(min, max) {
-    return Math.floor(Math.random() * (max - min)) + min;
-  };
 
-  let a = computer(0, 3);
 
-  function rps() {
-  if (a === 0) {
-    alert('I choose rock');
+
+function computerPlay() {
+  let randomNumber = Math.floor(Math.random() * 3) + 1;
+  if (randomNumber === 1) {
+      return "rock";
   }
-  else if (a === 1) {
-    alert('I choose paper');
+  else if (randomNumber === 2) {
+      return "paper";
   }
-  else if (a === 2) {
-    alert('I choose scissors');
+  else if (randomNumber === 3) {
+      return "scissors"
   }
 }
-rps();
+let a = computerPlay();
+let pos = 0;
 
-  function round() {
-if (player = 'rock' && a === 2) {
-    alert('You win')
+  function round(plate, computerPla) {
+  
+if ((plate === "rock") && (computerPla === "scissors")) {
+    pos++;
+    return "You win"
 }
-else if (player = 'rock' && a === 1) {
-    alert('You lose')
+else if ((plate === "rock") && (computerPla === "paper")) {
+    pos--;
+    return "You lose"
   }
-  else if (player = 'paper' && a === 2) {
-    alert('You lose')
+  else if ((plate === "paper") && (computerPla === "scissors")) {
+    pos--;
+    return "You lose"
   }
-  else if (player = 'paper' && a === 0) {
-    alert('You win')
+  else if ((plate === "paper") && (computerPla === "rock")) {
+    pos++;
+    return "You win"
   }
-  else if (player = 'scissors' && a === 0) {
-    alert('You lose')
+  else if ((plate === "scissors") && (computerPla === "rock")) {
+   pos--;
+   return "You lose"
   }
-  else if (player = 'scissors' && a === 1) {
-    alert('You win')
+  else if ((plate === "scissors") && (computerPla === "paper")) {
+    pos++;
+    return "You win"
   }
   else {
-    alert('draw')
-  }
+    if (plate === "rock" && computerPla === "rock") {
+      return "draw";
+    } 
+    else if (plate === "scissors" && computerPla === "scissors"){
+      return "draw";
+    }
+    else if (plate === "paper" && computerPla === "paper") {
+      return "draw";
+    }
+   
+  } 
 
 }
-  round();
-
-
-  function ciEquals(x, y) {
-    return typeof x === 'string' && typeof y === 'string'
-        ? x.localeCompare(y, undefined, { sensitivity: 'accent' }) === 0
-        : x === y;
+function game(selection, dog) {
+  return round(selection, dog);
 }
+let i= 0;
+
+  while (i < 5) {
+let player = prompt("pick rock, paper, or scissors");
+alert(computerPlay());
+  alert(game(player, computerPlay()));
+ 
+
+
+
+    
+ 
+i++
+}
+
+  
+
+if (i == 5 && pos >= 1) {
+  alert("you won!!!!")
+}
+else  if (i == 5 && pos == 0) {
+  alert("you drew with the computer????")
+}
+else if (i == 5 && pos < 0) {
+  alert("you lost ;-;")
+}
+
+ 
   
