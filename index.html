@@ -5,7 +5,93 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="script.js"></script>
+    <script>
+        function computerPlay() {
+  const randomNumber = Math.floor(Math.random() * 3) + 1;
+
+  if (randomNumber === 1) {
+      return "rock";
+  }
+  else if (randomNumber === 2) {
+      return "paper";
+  }
+  else if (randomNumber === 3) {
+      return "scissors";
+  }
+}
+
+
+let pos = 0;
+
+  function round(plate, computerPla) {
+    if ((plate === "rock") && (computerPla === "scissors")) {
+    pos++;
+    return "The computer chose scissors. You win, rock beats scissors"
+}
+else if ((plate === "rock") && (computerPla === "paper")) {
+    pos--;
+    return "The computer chose paper. You lose paper beats rock"
+  }
+  else if ((plate === "paper") && (computerPla === "scissors")) {
+    pos--;
+    return "The computer chose scissors. You lose scissors beats paper"
+  }
+  else if ((plate === "paper") && (computerPla === "rock")) {
+    pos++;
+    return "The computer chose rock. You win paper beats rock"
+  }
+  else if ((plate === "scissors") && (computerPla === "rock")) {
+   pos--;
+   return "The computer chose rock.  You lose rock beats scissors"
+  }
+  else if ((plate === "scissors") && (computerPla === "paper")) {
+    pos++;
+    return "The computer chose paper. You win scissors beats paper"
+  }
+  else {
+    if (plate === "rock" && computerPla === "rock") {
+      return "The computer chose rock. Draw, rock and rock";
+    } 
+    else if (plate === "scissors" && computerPla === "scissors"){
+      return "The computer chose scissors. Draw, scissors and scissors";
+    }
+    else if (plate === "paper" && computerPla === "paper") {
+      return "The computer chose paper. Draw, paper and paper";
+    }
+
+  } 
+}
+
+
+function game(selection) {
+    if ((selection !== "rock") && (selection !== "paper") && (selection !== "scissors")) {
+      alert("You entered an incorrect selection!\nYou need to pick either 'rock', 'paper' or 'scissors'");
+  }
+  else {
+return round(selection, computerPlay());
+  }
+}
+let i= 0;
+
+  while (i < 5) {
+let player = prompt("pick rock, paper, or scissors");
+play = player.toLowerCase
+  alert(game(player));
+i++
+}
+
+  
+
+if (i == 5 && pos >= 1) {
+  alert("you won!!!!")
+}
+else  if (i == 5 && pos == 0) {
+  alert("you drew with the computer????")
+}
+else if (i == 5 && pos < 0) {
+  alert("you lost ;-;")
+}
+    </script>
 </head>
 <body>
     

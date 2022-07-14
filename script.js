@@ -4,74 +4,53 @@
 
 function computerPlay() {
   let randomNumber = Math.floor(Math.random() * 3) + 1;
+
   if (randomNumber === 1) {
-      return "rock";
+      return "rock" + randomNumber;
   }
   else if (randomNumber === 2) {
-      return "paper";
+      return "paper" + randomNumber;
   }
   else if (randomNumber === 3) {
-      return "scissors"
+      return "scissors" + randomNumber;
   }
 }
+
 let a = computerPlay();
 let pos = 0;
 
   function round(plate, computerPla) {
-  
 if ((plate === "rock") && (computerPla === "scissors")) {
     pos++;
-    return "You win"
+    return "You win rs"
 }
-else if ((plate === "rock") && (computerPla === "paper")) {
-    pos--;
-    return "You lose"
-  }
-  else if ((plate === "paper") && (computerPla === "scissors")) {
-    pos--;
-    return "You lose"
-  }
   else if ((plate === "paper") && (computerPla === "rock")) {
     pos++;
-    return "You win"
-  }
-  else if ((plate === "scissors") && (computerPla === "rock")) {
-   pos--;
-   return "You lose"
+    return "You win pr"
   }
   else if ((plate === "scissors") && (computerPla === "paper")) {
     pos++;
-    return "You win"
+    return "You win sp"
   }
-  else {
-    if (plate === "rock" && computerPla === "rock") {
+  else if (plate === computerPla) {
       return "draw";
     } 
-    else if (plate === "scissors" && computerPla === "scissors"){
-      return "draw";
-    }
-    else if (plate === "paper" && computerPla === "paper") {
-      return "draw";
-    }
-   
+  else {
+    pos--;
+    return "You lose";
+  } 
   } 
 
-}
-function game(selection, dog) {
-  return round(selection, dog);
+
+function game(selection) {
+  return round(selection, computerPlay());
 }
 let i= 0;
 
   while (i < 5) {
 let player = prompt("pick rock, paper, or scissors");
 alert(computerPlay());
-  alert(game(player, computerPlay()));
- 
-
-
-
-    
- 
+  alert(game(player));
 i++
 }
 
