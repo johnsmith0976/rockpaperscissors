@@ -5,7 +5,96 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+  </head>
+  <body>
+      <h1>THE RPS GAME</h1>
+      <h3>It's you versus the computer, first to win 5 times takes the victory</h3>
+  <p>Pick what to play: </p>
+  
+  <button id="rock">rock</button>
+  <button id="paper">paper</button>
+  <button id="scissors">scissors</button>
+  <div id="demo"></div>
+    </body>
     <script>
+      let scissors = document.querySelector('#scissors');
+       let rock = document.querySelector('#rock');
+       let paper = document.querySelector('#paper');
+let pos = 0;
+let com = 0;
+
+scissors.addEventListener('click', function (e) {
+computerPlay();
+  if (computerPlay() === 'scissors') {
+    document.getElementById('demo').innerHTML += `The computer chose scissors. Draw, scissors and scissor <br>`;
+  }
+  else if (computerPlay() === "paper") {
+    document.getElementById('demo').innerHTML += `The computer chose paper. You win scissors beats paper <br>`;
+    pos++;
+  }
+  else if (computerPlay() === "rock") {
+    document.getElementById('demo').innerHTML += `The computer chose rock.  You lose rock beats scissors <br>`;
+    com++;
+  }
+  if (pos === 5) {
+  document.getElementById('demo').innerHTML += "\nYOU WON 5 GAMES, YOU ARE THE WINNER" + "<br>" + "Refresh the tab to play again <br>";
+  disable();
+}
+if (com === 5) {
+  document.getElementById('demo').innerHTML += "\nTHE COMPUTER WON 5 GAMES, IT IS THE WINNER" + "\n" + "Refresh the tab to play again <br>";
+  disable();
+}
+});
+
+
+rock.addEventListener('click', function (e) {
+  computerPlay();
+  if(computerPlay() === "scissors") {
+    document.getElementById('demo').innerHTML += `The computer chose scissors. You win, rock beats scissors <br>`;
+    pos++;
+  }
+  else if(computerPlay() === "paper") {
+    document.getElementById('demo').innerHTML += `The computer chose paper. You lose paper beats rock <br>`;
+    com++;
+  }
+  else if (computerPlay() === "rock") {
+    document.getElementById('demo').innerHTML += `The computer chose rock. Draw, rock and rock <br>`;
+  }
+  if (pos === 5) {
+  document.getElementById('demo').innerHTML += `YOU WON 5 GAMES, YOU ARE THE WINNER <br> Refresh the tab to play again <br>`
+  disable();
+}
+if (com === 5) {
+  document.getElementById('demo').innerHTML += `THE COMPUTER WON 5 GAMES, IT IS THE WINNER <br> Refresh the tab to play again <br>`
+  disable();
+}
+});
+
+
+paper.addEventListener('click', function (e) {
+  computerPlay();
+  if (computerPlay() === "scissors") {
+    document.getElementById('demo').innerHTML += `The computer chose scissors. You lose scissors beats paper <br>`;
+    com++;
+  }
+  else if (computerPlay() === "paper") {
+    document.getElementById('demo').innerHTML += `The computer chose paper. Draw, paper and paper <br>`;
+  }
+  else if (computerPlay() === "rock") {
+    document.getElementById('demo').innerHTML += `The computer chose rock. You win paper beats rock <br>`;
+    pos++
+  }
+  if (pos === 5) {
+  document.getElementById('demo').innerHTML += `YOU WON 5 GAMES, YOU ARE THE WINNER <br> Refresh the tab to play again <br>`
+  disable();
+}
+if (com === 5) {
+  document.getElementById('demo').innerHTML += `THE COMPUTER WON 5 GAMES, IT IS THE WINNER <br> Refresh the tab to play again <br>`
+   disable();
+}
+});
+
+
         function computerPlay() {
   const randomNumber = Math.floor(Math.random() * 3) + 1;
 
@@ -19,81 +108,22 @@
       return "scissors";
   }
 }
-
-
-let pos = 0;
-
-  function round(plate, computerPla) {
-    if ((plate === "rock") && (computerPla === "scissors")) {
-    pos++;
-    return "The computer chose scissors. You win, rock beats scissors"
+/*if (pos === 5) {
+  document.getElementById('demo').innerHTML += `YOU WON 5 GAMES, YOU ARE THE WINNER <br> Refresh the tab to play again <br>`
 }
-else if ((plate === "rock") && (computerPla === "paper")) {
-    pos--;
-    return "The computer chose paper. You lose paper beats rock"
-  }
-  else if ((plate === "paper") && (computerPla === "scissors")) {
-    pos--;
-    return "The computer chose scissors. You lose scissors beats paper"
-  }
-  else if ((plate === "paper") && (computerPla === "rock")) {
-    pos++;
-    return "The computer chose rock. You win paper beats rock"
-  }
-  else if ((plate === "scissors") && (computerPla === "rock")) {
-   pos--;
-   return "The computer chose rock.  You lose rock beats scissors"
-  }
-  else if ((plate === "scissors") && (computerPla === "paper")) {
-    pos++;
-    return "The computer chose paper. You win scissors beats paper"
-  }
-  else {
-    if (plate === "rock" && computerPla === "rock") {
-      return "The computer chose rock. Draw, rock and rock";
-    } 
-    else if (plate === "scissors" && computerPla === "scissors"){
-      return "The computer chose scissors. Draw, scissors and scissors";
-    }
-    else if (plate === "paper" && computerPla === "paper") {
-      return "The computer chose paper. Draw, paper and paper";
-    }
+if (com === 5) {
+  document.getElementById('demo').innerHTML += `THE COMPUTER WON 5 GAMES, IT IS THE WINNER <br> Refresh the tab to play again <br>`
+} */
 
-  } 
+
+function disable() {
+  document.getElementById('scissors').disabled = true;
+  document.getElementById('rock').disabled = true;
+  document.getElementById('paper').disabled = true;
 }
 
+ 
 
-function game(selection) {
-    if ((selection !== "rock") && (selection !== "paper") && (selection !== "scissors")) {
-      alert("You entered an incorrect selection!\nYou need to pick either 'rock', 'paper' or 'scissors'");
-  }
-  else {
-return round(selection, computerPlay());
-  }
-}
-let i= 0;
-
-  while (i < 5) {
-let player = prompt("pick rock, paper, or scissors");
-play = player.toLowerCase
-  alert(game(player));
-i++
-}
-
-  
-
-if (i == 5 && pos >= 1) {
-  alert("you won!!!!")
-}
-else  if (i == 5 && pos == 0) {
-  alert("you drew with the computer????")
-}
-else if (i == 5 && pos < 0) {
-  alert("you lost ;-;")
-}
     </script>
-</head>
-<body>
-    
-</body>
+
 </html>
